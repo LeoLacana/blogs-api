@@ -79,9 +79,9 @@ Para fazer um post é necessário usuário e login, portanto será trabalhada a 
 
   - Projeto individual.
 
-  - Serão 2 dias de projeto.
+  - Serão 3 dias de projeto.
 
-  - Data de entrega para avaliação final do projeto: `03/12/2021 - 14:00h`.
+  - Data de entrega para avaliação final do projeto: `06/12/2021 - 14:00h`.
 
 ---
 
