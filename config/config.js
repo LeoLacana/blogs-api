@@ -2,10 +2,10 @@ require('dotenv').config();
 
 module.exports = {
     development: {
-      username: 'root',
-      password: 'my-secret-pw',
+      username: process.env.MYSQL_USER,
+      password: process.env.MYSQL_PASSWORD,
       database: 'blogs_api',
-      host: '127.0.0.1',
+      host: process.env.HOSTNAME,
       dialect: 'mysql',
     },
     test: {
