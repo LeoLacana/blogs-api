@@ -8,20 +8,19 @@ const jwtConfig = {
   algorithm: 'HS256',
 };
 
-
 const setUser = async (displayName, email, password, image) => {
   const infoUser = { displayName, email };
   const token = await jwt.sign({ data: infoUser }, secret, jwtConfig);
-  await User.create({ displayName, email, password, image })
+  await User.create({ displayName, email, password, image });
   return token;
-}
+};
 
 const showUser = async (email) => {
   const user = await User.findOne({ where: { email } });
   return user;
-}
+};
 
 module.exports = {
   setUser,
   showUser,
-}
+};
