@@ -7,11 +7,12 @@ const jwtConfig = {
   algorithm: 'HS256',
 };
 
-const generateToken = (email) => {
-    const token = jwt.sign({ data: email }, secret, jwtConfig);
-    return token;
+const generateToken = (email, password) => {
+  const dataJwt = { email, password };
+  const token = jwt.sign({ data: dataJwt }, secret, jwtConfig);
+  return token;
 };
 
 module.exports = {
-    generateToken,
+  generateToken,
 };

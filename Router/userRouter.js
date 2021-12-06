@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-// const { validateJWT } = require('../auth/validateJWT');
+const validateJWT = require('../auth/validateJWT');
 
 const {
     registerUser,
@@ -18,6 +18,7 @@ router.post('/',
     registerUser);
 
 router.get('/',
+    validateJWT,
     getUsers);
 
 module.exports = router;
