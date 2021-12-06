@@ -1,10 +1,10 @@
 // const jwt = require('jsonwebtoken');
-// const model = require('../../model/usersModel');
+// const { showUser } = require('../service/userService');
 
 // const secret = 'turma11';
 
 // const jwtConfig = {
-//   expiresIn: '1d',
+//   expiresIn: '7d',
 //   algorithm: 'HS256',
 // };
 
@@ -18,7 +18,7 @@
 //   try {
 //     const decode = jwt.verify(token, secret, jwtConfig);
 
-//     const user = await model.getUser(decode.data.name);
+//     const user = await showUser(decode.data.email);
 
 //     if (!user) {
 //       return res

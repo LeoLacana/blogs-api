@@ -1,6 +1,10 @@
 const router = require('express').Router();
+
+// const { validateJWT } = require('../auth/validateJWT');
+
 const {
-    registerUser } = require('../controller/userController');
+    registerUser,
+    getUsers } = require('../controller/userController');
 
 const {
     validationDisplayName,
@@ -12,5 +16,8 @@ router.post('/',
     validationPassword,
     validationEmail,
     registerUser);
+
+router.get('/',
+    getUsers);
 
 module.exports = router;

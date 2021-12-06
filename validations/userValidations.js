@@ -18,11 +18,16 @@ const validationEmail = async (req, res, next) => {
     return res.status(400).json({ message: '"email" is required' });
   }
 
+  if (email.length === 0) {
+    return res.status(400).json({ message: '"email" is not allowed to be empty' });
+  }
+
   if (!emailRegex.test(email)) {
     return res.status(400).json({ message: '"email" must be a valid email' });
   }
 
   const user = await showUser(email);
+  console.log(user);
   if (user) {
     return res.status(409).json({ message: 'User already registered' });
   }
@@ -34,6 +39,10 @@ const validationPassword = async (req, res, next) => {
   const { password } = req.body;
 
   if (!password) return res.status(400).json({ message: '"password" is required' });
+
+  if (password.length === 0) {
+    return res.status(400).json({ message: '"password" is not allowed to be empty' });
+  }
 
   if (password.length < 6) {
     return res.status(400).json({ message: '"password" length must be 6 characters long' });
