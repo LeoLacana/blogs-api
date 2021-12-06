@@ -9,7 +9,6 @@ const setUser = async (displayName, email, password, image) => {
 
 const showUser = async (email) => {
   const user = await User.findOne({ where: { email } });
-  console.log(email);
   return user;
 };
 

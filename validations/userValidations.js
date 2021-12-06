@@ -27,7 +27,6 @@ const validationEmail = async (req, res, next) => {
   }
 
   const user = await showUser(email);
-  console.log(user);
   if (user) {
     return res.status(409).json({ message: 'User already registered' });
   }
