@@ -1,7 +1,7 @@
 const frisby = require('frisby');
 const shell = require('shelljs');
 
-const url = 'http://localhost:3000';
+const url = 'http://localhost:3002';
 
 describe('2 - Sua aplicação deve ter o endpoint POST `/login`', () => {
   beforeEach(async () => {
