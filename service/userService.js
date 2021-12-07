@@ -21,8 +21,18 @@ const showAllUsers = async () => {
   return users;
 };
 
+const showUserById = async (id) => {
+  try {
+    const user = await User.findByPk(id);
+    return user;
+  } catch (err) {
+    return { message: err.message };
+  }
+};
+
 module.exports = {
   setUser,
   showUser,
   showAllUsers,
+  showUserById,
 };

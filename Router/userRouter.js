@@ -4,7 +4,8 @@ const validateJWT = require('../auth/validateJWT');
 
 const {
     registerUser,
-    getUsers } = require('../controller/userController');
+    getUsers,
+    getUserById } = require('../controller/userController');
 
 const {
     validationDisplayName,
@@ -20,5 +21,9 @@ router.post('/',
 router.get('/',
     validateJWT,
     getUsers);
+
+router.get('/:id',
+    validateJWT,
+    getUserById);
 
 module.exports = router;
