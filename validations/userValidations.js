@@ -1,6 +1,6 @@
 const { showUser } = require('../service/userService');
 
-const validationDisplayName = (req, res, next) => {
+const validationDisplayName = async (req, res, next) => {
   const { displayName } = req.body;
   if (typeof (displayName) === 'string' && displayName.length < 8) {
     return res.status(400).json({ 
