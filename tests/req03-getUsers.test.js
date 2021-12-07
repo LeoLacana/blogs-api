@@ -1,7 +1,7 @@
 const frisby = require('frisby');
 const shell = require('shelljs');
 
-const url = 'http://localhost:3002';
+const url = 'http://localhost:3000';
 
 describe('3 - Sua aplicação deve ter o endpoint GET `/user`', () => {
   beforeEach(() => {
