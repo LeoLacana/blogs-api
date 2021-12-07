@@ -1,4 +1,5 @@
-const { setCategories } = require('../service/categoriesService');
+const { setCategories,
+    showCategories } = require('../service/categoriesService');
 
 const registerCategories = async (req, res) => {
     const { name } = req.body;
@@ -13,6 +14,16 @@ const registerCategories = async (req, res) => {
     }
 };
 
+const getCategories = async (req, res) => {
+    try {
+        const categories = await showCategories();
+        return res.status(200).json(categories);
+    } catch (err) {
+        return { message: err.message };
+    }
+};
+
 module.exports = {
     registerCategories,
+    getCategories,
 };

@@ -9,6 +9,16 @@ const setCategories = async (name) => {
     }
 };
 
+const showCategories = async () => {
+    try {
+        const categories = await Categories.findAll();
+        return categories;
+    } catch (err) {
+        return { message: err.message };
+    }
+};
+
 module.exports = {
     setCategories,
+    showCategories,
 };
