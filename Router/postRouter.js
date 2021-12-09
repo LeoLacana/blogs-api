@@ -5,9 +5,15 @@ const validateJWT = require('../auth/validateJWT');
 const {
     titleValidation,
     contentValidation,
-    categoryIdsValidation } = require('../validations/postValidation');
+    categoryIdsValidation,
+    validationAuthIdUser } = require('../validations/postValidation');
 
-const { registerPost } = require('../controller/postController');
+const {
+    registerPost,
+    getPost,
+    getPostById,
+    updatePost,
+    deletePost } = require('../controller/postController');
 
 router.post('/',
     validateJWT,
@@ -15,5 +21,22 @@ router.post('/',
     contentValidation,
     categoryIdsValidation,
     registerPost);
+
+router.get('/',
+    validateJWT,
+    getPost);
+
+router.get('/:id',
+    validateJWT,
+    getPostById);
+
+router.put('/:id',
+    validateJWT,
+    validationAuthIdUser,
+    updatePost);
+
+router.delete('/:id',
+    validateJWT,
+    deletePost);
 
 module.exports = router;

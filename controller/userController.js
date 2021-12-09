@@ -1,9 +1,8 @@
 const {
     setUser,
-    showAllUsers } = require('../service/userService');
-
-const {
-    showUserById } = require('../service/userService');
+    showAllUsers,
+    showUserById,
+    removeUser } = require('../service/userService');
 
 const registerUser = async (req, res) => {
     const { displayName, email, password, image } = req.body;
@@ -27,8 +26,19 @@ const getUserById = async (req, res) => {
     }
 };
 
+const deleteUser = async (req, res) => {
+    const { email } = req.user;
+    try {
+        await removeUser(email);
+        return res.status(204).json();
+    } catch (err) {
+        return { message: err.message };
+    }
+};
+
 module.exports = {
     registerUser,
     getUsers,
     getUserById,
+    deleteUser,
 };

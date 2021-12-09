@@ -30,9 +30,18 @@ const showUserById = async (id) => {
   }
 };
 
+const removeUser = async (id) => {
+  try {
+    await User.destroy({ where: { id } });
+  } catch (err) {
+    return { message: err.message };
+  }
+};
+
 module.exports = {
   setUser,
   showUser,
   showAllUsers,
   showUserById,
+  removeUser,
 };

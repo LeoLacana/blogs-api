@@ -5,7 +5,8 @@ const validateJWT = require('../auth/validateJWT');
 const {
     registerUser,
     getUsers,
-    getUserById } = require('../controller/userController');
+    getUserById,
+    deleteUser } = require('../controller/userController');
 
 const {
     validationDisplayName,
@@ -25,5 +26,9 @@ router.get('/',
 router.get('/:id',
     validateJWT,
     getUserById);
+
+router.delete('/:id',
+    validateJWT,
+    deleteUser);
 
 module.exports = router;
