@@ -2,14 +2,12 @@ const { BlogPosts, User, Categories } = require('../models');
 const { showUser } = require('./userService');
 
 const setPost = async (bodyPost, email) => {
-  const { title, content, categoryIds } = bodyPost;
-  console.log(categoryIds);
+  const { title, content } = bodyPost;
   try {
     const post = await BlogPosts.create(bodyPost);
     const user = await showUser(email);
     const userId = user.dataValues.id;
     const { id } = post.dataValues;
-    console.log(userId);
     const response = { id, title, content, userId };
     return response;
   } catch (err) {
@@ -22,8 +20,8 @@ const showPost = async () => {
     const post = await BlogPosts.findAll(
       {
         include: [
-          { model: User, as: 'Users', attributes: { exclude: ['password'] } },
-          { model: Categories, as: 'Categories', through: { attributes: [] } },
+          { model: User, as: 'user', attributes: { exclude: ['password'] } },
+          { model: Categories, as: 'categories', through: { attributes: [] } },
         ],
       },
     );
@@ -39,8 +37,8 @@ const showPostById = async (id) => {
       { 
         where: { id }, 
         include: [
-          { model: User, as: 'Users', attributes: { exclude: ['password'] } },
-          { model: Categories, as: 'Categories' },
+          { model: User, as: 'user', attributes: { exclude: ['password'] } },
+          { model: Categories, as: 'categories' },
         ],
       },
     );
@@ -58,7 +56,7 @@ const EditPost = async (title, content, id) => {
     );
     const postAfterEdit = await BlogPosts.findByPk(id, {
       include: {
-        model: Categories, as: 'Categories', through: { attributes: [] },
+        model: Categories, as: 'categories', through: { attributes: [] },
       },
     });
     return postAfterEdit;

@@ -53,9 +53,6 @@ const updatePost = async (req, res) => {
 const deletePost = async (req, res) => {
   const { id } = req.params;
   try {
-    const verifyPost = await showPostById(id);
-    console.log(verifyPost);
-    if (!verifyPost) return res.status(404).json({ message: 'Post does not exist' });
     await removePost(id);
     return res.status(204).json();
   } catch (err) {

@@ -6,6 +6,7 @@ const {
     titleValidation,
     contentValidation,
     categoryIdsValidation,
+    validationDeletePost,
     validationAuthIdUser } = require('../validations/postValidation');
 
 const {
@@ -37,6 +38,8 @@ router.put('/:id',
 
 router.delete('/:id',
     validateJWT,
+    validationDeletePost,
+    validationAuthIdUser,
     deletePost);
 
 module.exports = router;
